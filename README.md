@@ -51,9 +51,10 @@ Following first normal rules are violated by customers table
 - There are two repeating groups of columns in the table. For example, (Project1_ID, Project1_FeedBack) and (Project2_ID, Project2_Feedback). We need to get these removed from this table.
 ### Steps For First Normalization
 - The first thing that I need to do is to add a primary key (id) to this table
-- Secondly, I need to split the column ContactPersonAndRole into two individual columns. This can be done in two steps as follows:
+- Secondly, I need to split the column ContactPersonAndRole into two individual columns. 
+This can be done in two steps as follows:
 -- Rename the original column from ContactPersonAndRole to ContactPerson.
-Add a new column for ContactPersonRole.
+-- Add a new column for ContactPersonRole.
 - Finally, in order to satisfy the third rule of the First Normal Form, I need to move the columns Project1_ID, Project1_Feedback, Project2_ID, and Project2_Feedback into a new table. This can be done by creating a new table ProjectFeedbacks and link it back with the Customers and the Projects table. Here, new table ProjectFeedbacks use Foreign Key references to the Customers and Projects table.
 The following database diagram will appear after applying all the rules of the first normal form.
 
