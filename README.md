@@ -58,3 +58,13 @@ Following first normal rules are violated by customers table
  - Finally, in order to satisfy the third rule of the First Normal Form, I need to move the columns Project1_ID, Project1_Feedback, Project2_ID, and Project2_Feedback into a new table. This can be done by creating a new table ProjectFeedbacks and link it back with the Customers and the Projects table. Here, new table ProjectFeedbacks use Foreign Key references to the Customers and Projects table.
 The following database diagram will appear after applying all the rules of the first normal form.
 <img src="image/Fig 2.png" width="600"/>
+
+# Second Normal Form
+## Identification of Problems
+From the earlier figure, we can see that he ContactPerson, ContactPersonRole and the PhoneNumber do not directly relate to the ID of the Customers table. That is because the primary key refers to a customer and not to any person or role or the phone number of the contact person.
+
+## Steps For Second Normalization
+- So in order to satisfy the second rule, we need removed these columns from table and store these columns in new table named as ContactPerson. Keep in mind, this table contain data related to the contact person not information about customers
+- Once, the columns are removed from the Customers table, we need to create a new table that'll store the data for the contact persons. Let us create a new table ContactPersons and relate it to the Customers table with a foreign key relation
+Now you can see in the diagram below that a new table has been added and it satisfies the second normal form of the database
+<img src="image/Fig 3.png" width="600"/>
