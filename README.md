@@ -41,57 +41,19 @@ Let us consider the following data base diagrams, there is existing data base wi
 
 <img src="image/Fig 1.png" width="600"/>
 
-The following sql code is provided to construct the initial data base (fig1)
-create database ProjNormlization;
-use ProjNormlization;
-CREATE TABLE Projects(
-ID INT PRIMARY KEY,
-Name VARCHAR(100),
-Value DECIMAL(5,2),
-StartDate DATE,
-EndDate DATE
-);
+# Normalizing Examples Database and Discussion
+## First Normal Form
+### Identification of Problems
+Following first normal rules are violated by customers table
 
-CREATE TABLE Employees(
-ID INT PRIMARY KEY ,
-FirstName VARCHAR(50),
-LastName VARCHAR(50),
-HourlyWage DECIMAL(5,2),
-HireDate DATE
-);
-
-CREATE TABLE ProjectEmployees(
-ID INT PRIMARY KEY,
-ProjectID INT,
-EmployeeID INT,
-Hours DECIMAL(5,2),
-CONSTRAINT FK_ProjectEmployees_Projects FOREIGN KEY (ProjectID) REFERENCES  Projects (ID),
-CONSTRAINT FK_ProjectEmployees_Employees FOREIGN KEY (EmployeeID) REFERENCES  Employees (ID)
-);
-CREATE TABLE JobOrders(
-ID INT PRIMARY KEY ,
-EmployeeID INT,
-ProjectID INT,
-Description TEXT,
-OrderDateTime DATETIME,
-Quantity INT,
-Price DECIMAL(5,2),
-CONSTRAINT FK_JobOrders_Projects FOREIGN KEY (ProjectID) REFERENCES  Projects (ID),
-CONSTRAINT FK_JobOrders_Employees FOREIGN KEY (EmployeeID) REFERENCES  Employees (ID)
-);
-
-CREATE TABLE Customers (
-    Name VARCHAR(100),
-    Industry VARCHAR(100),
-    Project1_ID INT,
-    Project1_Feedback TEXT,
-    Project2_ID INT,
-    Project2_Feedback TEXT,
-    ContactPersonID INT,
-    ContactPersonAndRole VARCHAR(255),
-    PhoneNumber VARCHAR(12),
-    Address VARCHAR(255),
-    City VARCHAR(255),
-    Zip VARCHAR(5)
-  );
+There is no primary key (id)
+Data is not in redundant form. For example, the column ContactPersonAndRole can be divided into two individuals column for example: ContactPerson and ContactPersonRole
+There are two repeating groups of columns in the table. For example, (Project1_ID, Project1_FeedBack) and (Project2_ID, Project2_Feedback). We need to get these removed from this table.
+Steps For First Normalization
+The first thing that I need to do is to add a primary key (id) to this table
+Secondly, I need to split the column ContactPersonAndRole into two individual columns. This can be done in two steps as follows:
+Rename the original column from ContactPersonAndRole to ContactPerson.
+Add a new column for ContactPersonRole.
+Finally, in order to satisfy the third rule of the First Normal Form, I need to move the columns Project1_ID, Project1_Feedback, Project2_ID, and Project2_Feedback into a new table. This can be done by creating a new table ProjectFeedbacks and link it back with the Customers and the Projects table. Here, new table ProjectFeedbacks use Foreign Key references to the Customers and Projects table.
+The following database diagram will appear after applying all the rules of the first normal form.
 
