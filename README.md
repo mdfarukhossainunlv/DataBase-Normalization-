@@ -39,4 +39,4 @@ In this project we will focus on the first three normalizing process in database
 # Overview of the examples Database
 Let us consider the following data base diagrams, there is existing data base with four tables- Projects, Employees, ProjectsEmployees, and JobOrders. Besides, a new table (Customers) for customer information is added with existing database. But, if you observe in diagram, you can see customers tables has not been designed in proper way to support the normal form. Our main objective to update the customers tables so that it can follow the rules of normalization
 
-<img src="Image/Fig1.png" width="600"/>
+<img src="image/Fig1.png" width="600"/>
