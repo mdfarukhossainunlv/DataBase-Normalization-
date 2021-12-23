@@ -68,3 +68,19 @@ From the earlier figure, we can see that he ContactPerson, ContactPersonRole and
 - Once, the columns are removed from the Customers table, we need to create a new table that'll store the data for the contact persons. Let us create a new table ContactPersons and relate it to the Customers table with a foreign key relation
 Now you can see in the diagram below that a new table has been added and it satisfies the second normal form of the database
 <img src="image/Fig 3.png" width="600"/>
+
+# Third Normal Form
+## Identification of Problems
+In third normal form, along with second normal form, we have to ensure that each columns must be non-transitively independent, that means, each columns should be rely on the primary key column not any other columns. Here, although city and zip code are related to the primary key, they depend on each other and violates non-transitively independent conditions.
+
+## Steps For Third Normalization
+In order to fix the problem, we need to remove the city from customer table and create a new table zipcodes to store columns city and zip. This new table can be related to the Customers table via a foreign key relation.
+
+Now that all the changes are performed, lets look at the following figure after the third normal form has also been satisfied
+<img src="image/Fig 4.png" width="600"/>
+
+
+# Contributor Info
+- Md Faruk Hossain
+  - fhossainisrt@gmail.com
+  - fhossain2@isrt.ac.bd
